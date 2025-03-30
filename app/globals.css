@@ -1,143 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
-  --foreground-color: #333;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  @apply bg-gray-100 text-foreground;
-}
-
-@import 'tailwindcss/preflight';
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border;
-  }
-}
-
-/* 自定义滚动条样式 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* 平滑滚动 */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 卡片悬停效果 */
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* 动画效果 */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-.animate-fade-in-delay {
-  animation: fadeIn 0.8s ease-out 0.2s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delay-2 {
-  animation: fadeIn 0.8s ease-out 0.4s forwards;
-  opacity: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
