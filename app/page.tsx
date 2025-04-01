@@ -5,23 +5,18 @@ export default function Home() {
   // 自媒体平台数据
   const socialMedia = [
     {
+      name: 'Github',
+      icon: '/github.png',
+      url: 'https://github.com/pengxiaohua'
+    },
+    {
       name: '抖音',
-      icon: '/douyin.svg',
-      url: 'https://www.douyin.com/user/xiaohua'
-    },
-    {
-      name: '微博',
-      icon: '/weibo.svg',
-      url: 'https://weibo.com/xiaohua'
-    },
-    {
-      name: '微信公众号',
-      icon: '/wechat.svg',
-      url: '#'
+      icon: '/douyin.png',
+      url: 'https://www.douyin.com/user/xiaohua_up'
     },
     {
       name: '小红书',
-      icon: '/xiaohongshu.svg',
+      icon: '/xiaohongshu.png',
       url: 'https://www.xiaohongshu.com/user/profile/xiaohua'
     }
   ];
@@ -29,46 +24,46 @@ export default function Home() {
   // 个人项目数据
   const projects = [
     {
-      title: '智能助手项目',
-      description: '基于人工智能的个人助手应用，帮助用户管理日程和提高工作效率',
+      title: '在线英语听写平台Listenly',
+      description: '为学生提供在线英语单词和句子听写的平台',
       image: '/project1.jpg',
-      url: 'https://project1.xiaohua.run',
-      github: 'https://github.com/xiaohua/project1'
+      url: 'https://listenly.cn',
+      github: 'https://github.com/pengxiaohua/listenly'
     },
     {
-      title: '在线学习平台',
-      description: '为学生提供在线课程和学习资源的教育平台',
+      title: '在线简历编辑平台',
+      description: '在线简历编辑和生成导出的平台',
       image: '/project2.jpg',
-      url: 'https://project2.xiaohua.run',
-      github: 'https://github.com/xiaohua/project2'
+      url: 'https://resume.xiaohua.run',
+      github: 'https://github.com/pengxiaohua/resume-editor'
     },
     {
-      title: '社区论坛系统',
-      description: '一个现代化的社区讨论平台，支持多种媒体内容分享',
+      title: 'AI私有组件生成系统',
+      description: '一个基于企业私有组件生成代码的AI系统',
       image: '/project3.jpg',
-      url: 'https://project3.xiaohua.run',
-      github: 'https://github.com/xiaohua/project3'
+      url: 'https://ai.xiaohua.run',
+      github: 'https://github.com/pengxiaohua/private-components-generator'
     }
   ];
 
   // 课程数据
   const courses = [
     {
-      title: 'Web开发入门',
+      title: '大前端面试指南',
       description: '学习HTML、CSS和JavaScript基础，开始您的网页开发之旅',
-      image: '/course1.jpg',
+      image: '/interview.png',
       slug: 'web-development-basics'
     },
     {
-      title: 'React全栈开发',
+      title: 'React&Nodejs全栈开发',
       description: '从零开始学习React框架，掌握现代前端开发技能',
-      image: '/course2.jpg',
+      image: '/full-stack.png',
       slug: 'react-fullstack'
     },
     {
       title: '人工智能应用',
-      description: '探索AI技术在实际项目中的应用，包括机器学习和自然语言处理',
-      image: '/course3.jpg',
+      description: '探索AI技术在实际项目中的应用',
+      image: '/ai-components.png',
       slug: 'ai-applications'
     }
   ];
@@ -77,7 +72,7 @@ export default function Home() {
     <main className="min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
       {/* 顶部Logo */}
       <div className="flex justify-center mb-12">
-        <Image src="/logo.svg" alt="xiaohua.run" width={200} height={60} priority />
+        <h1 className="text-4xl font-bold">xiaohua.run!</h1>
       </div>
 
       {/* 个人简介部分 */}
@@ -85,10 +80,10 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-4 text-center">关于我</h2>
         <div className="bg-white p-6 rounded-lg shadow-sm">
           <p className="text-gray-700 leading-relaxed">
-            你好！我是小花，一名充满热情的全栈开发者和教育工作者。我拥有超过8年的软件开发经验，
-            专注于Web应用和人工智能领域。我相信技术的力量可以改变世界，并致力于通过教育和创新项目
+            你好！我是前端小华，一名充满热情的全栈开发者。我拥有超过10年的软件开发经验，
+            专注于软件应用开发和人工智能领域。我相信技术的力量可以改变世界，并致力于通过教育和创新项目
             来实现这一目标。在我的职业生涯中，我参与开发了多个成功的商业项目，同时也热衷于分享知识，
-            帮助更多人进入科技行业。
+            帮助更多人进入软件开发行业。
           </p>
           <p className="text-gray-700 leading-relaxed mt-4">
             除了编程，我还喜欢探索新技术、阅读科技书籍和参与开源社区。我期待与志同道合的朋友一起
