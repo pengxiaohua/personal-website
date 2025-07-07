@@ -1,4 +1,7 @@
+'use client'
+
 import Image from "next/image";
+import TextPressure from "./components/common/TextPressure";
 import Link from "next/link";
 
 export default function Home() {
@@ -17,7 +20,7 @@ export default function Home() {
     {
       name: '小红书',
       icon: '/xiaohongshu.png',
-      url: 'https://www.xiaohongshu.com/user/profile/xiaohua'
+      url: 'https://www.xiaohongshu.com/user/https://www.xiaohongshu.com/user/profile/6102837a0000000001003d5aprofile/xiaohua'
     }
   ];
 
@@ -25,8 +28,8 @@ export default function Home() {
   const projects = [
     {
       title: '在线英语听写平台Listenly',
-      description: '为学生提供在线英语单词和句子听写的平台',
-      image: '/project1.jpg',
+      description: '为英语学习者提供在线英语单词和句子听写的平台',
+      image: '/listenly.png',
       url: 'https://listenly.cn',
       github: 'https://github.com/pengxiaohua/listenly'
     },
@@ -72,29 +75,69 @@ export default function Home() {
     <main className="min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
       {/* 顶部Logo */}
       <div className="flex justify-center mb-12">
-        <h1 className="text-4xl font-bold">xiaohua.run!</h1>
+      <TextPressure
+        text="XIAOHUA.RUN!"
+        flex={true}
+        alpha={false}
+        stroke={false}
+        width={true}
+        weight={true}
+        italic={true}
+        textColor="#ffffff"
+        strokeColor="#ff0000"
+        minFontSize={36}
+      />
       </div>
 
       {/* 个人简介部分 */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-center">关于我</h2>
-        <div className="bg-white p-6 rounded-lg shadow-sm">
-          <p className="text-gray-700 leading-relaxed">
-            你好！我是前端小华，一名充满热情的全栈开发者。我拥有超过10年的软件开发经验，
-            专注于软件应用开发和人工智能领域。我相信技术的力量可以改变世界，并致力于通过教育和创新项目
-            来实现这一目标。在我的职业生涯中，我参与开发了多个成功的商业项目，同时也热衷于分享知识，
-            帮助更多人进入软件开发行业。
-          </p>
-          <p className="text-gray-700 leading-relaxed mt-4">
-            除了编程，我还喜欢探索新技术、阅读科技书籍和参与开源社区。我期待与志同道合的朋友一起
-            合作，创造更多有价值的产品和服务。
-          </p>
+      <section className="mb-12 relative">
+        <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+          关于我
+        </h2>
+        <div className="bg-[rgb(var(--card-background))] p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-[0_4px_18px_0_rgba(0,0,0,0.25)] hover:border-[#008bf8] relative overflow-hidden backdrop-blur-sm border border-opacity-10 border-white dark:border-gray-700">
+          {/* 装饰性背景元素 */}
+          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/10 to-teal-500/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20"></div>
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 rounded-full blur-3xl transform -translate-x-20 translate-y-20"></div>
+          
+          {/* 内容区域 */}
+          <div className="relative space-y-4">
+            <p className="text-lg leading-relaxed text-white opacity-90">
+              你好！我是
+              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 mx-1">
+                全栈小华
+              </span>
+              ，一名充满热情的全栈开发者。
+            </p>
+
+            <p className="text-lg leading-relaxed text-white opacity-90">
+              超过10年软件开发经验，先后在阿里巴巴、小米任职。
+            </p>
+            
+            <div className="mt-6 p-4 bg-gradient-to-r from-blue-500/5 to-teal-500/5 rounded-xl border border-blue-200/10 dark:border-blue-900/30">
+              <p className="text-lg leading-relaxed text-white opacity-90 italic">
+                &quot;<b>梦想：</b>做一个纯粹的程序员，可以背着电脑，骑着车，在东湖边，吹着风，看着夕阳，听着音乐，
+                累了找一家咖啡馆坐下来，打开电脑做自己感兴趣的项目。&quot;
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap gap-3 mt-6">
+              <span className="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300">
+                远程开发
+              </span>
+              <span className="px-3 py-1 text-sm rounded-full bg-teal-100 text-teal-600 dark:bg-teal-900/30 dark:text-teal-300">
+                全栈开发
+              </span>
+              <span className="px-3 py-1 text-sm rounded-full bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+                自由职业
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 自媒体账号部分 */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-4 text-center">关注我</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">关注我</h2>
         <div className="flex flex-wrap justify-center gap-8">
           {socialMedia.map((platform) => (
             <a
@@ -113,7 +156,7 @@ export default function Home() {
                   className="rounded-full"
                 />
               </div>
-              <span className="text-gray-700">{platform.name}</span>
+              <span className="text-white underline">{platform.name}</span>
             </a>
           ))}
         </div>
@@ -121,10 +164,10 @@ export default function Home() {
 
       {/* 个人项目部分 */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-4 text-center">个人项目</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">个人项目</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <div key={project.title} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div key={project.title} className="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_4px_18px_0_rgba(0,0,0,0.25)] hover:border-[#008bf8]">
               <div className="h-48 relative">
                 <Image
                   src={project.image}
@@ -147,7 +190,7 @@ export default function Home() {
                   </a>
                   <a
                     href={project.github}
-                    className="text-gray-500 hover:text-gray-700 text-sm"
+                    className="text-blue-500 hover:text-blue-700 text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -162,13 +205,13 @@ export default function Home() {
 
       {/* 课程部分 */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-4 text-center">我的课程</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">我的课程</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
             <Link
               key={course.title}
               href={`/courses/${course.slug}`}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_4px_18px_0_rgba(0,0,0,0.25)] hover:border-[#008bf8] block"
             >
               <div className="h-48 relative">
                 <Image
