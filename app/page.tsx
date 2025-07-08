@@ -138,7 +138,7 @@ export default function Home() {
       {/* 自媒体账号部分 */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">关注我</h2>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-15">
           {socialMedia.map((platform) => (
             <a
               key={platform.name}
