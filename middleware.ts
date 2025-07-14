@@ -12,6 +12,8 @@ export function middleware(request: NextRequest) {
       return NextResponse.rewrite(new URL('/resume', request.url))
     case 'blog':
       return NextResponse.rewrite(new URL('/blog', request.url))
+    case 'fate':
+      return NextResponse.rewrite(new URL('/fate', request.url))
     case 'www':
     case 'xiaohua':
       // 主域名，保持原样

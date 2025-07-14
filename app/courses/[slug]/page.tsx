@@ -56,9 +56,9 @@ const coursesData = {
     }
 };
 
-export default function CoursePage({ params }: { params: { slug: string } }) {
-    const { slug } = params;
-    const course = coursesData[slug as keyof typeof coursesData];
+export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const course = coursesData[slug as keyof typeof coursesData];
 
     // 如果没有找到课程，显示错误信息
     if (!course) {

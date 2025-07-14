@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 // 模拟博客文章数据
@@ -118,8 +117,8 @@ const blogData = {
   }
 };
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const post = blogData[slug as keyof typeof blogData];
 
   if (!post) {
