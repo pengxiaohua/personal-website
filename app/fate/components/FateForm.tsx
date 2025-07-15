@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 interface FateFormData {
   year: number | ''
@@ -8,8 +9,21 @@ interface FateFormData {
   day: number | ''
   hour: string
   gender: 'male' | 'female' | ''
-  calendar: 'lunar' | 'solar' // 新增：农历/公历选择
+  calendar: 'lunar' | 'solar' // 农历/公历选择
 }
+
+// 农历月份显示
+const LUNAR_MONTHS = [
+  '正月', '二月', '三月', '四月', '五月', '六月',
+  '七月', '八月', '九月', '十月', '冬月', '腊月'
+]
+
+// 农历日期显示
+const LUNAR_DAYS = [
+  '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
+  '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十',
+  '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'
+]
 
 export default function FateForm() {
   const [formData, setFormData] = useState<FateFormData>({
@@ -198,7 +212,7 @@ export default function FateForm() {
         <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-bold text-white mb-2">
-              {showDetailed ? '详细命理解读' : '袁天罡称骨算命'}
+              {showDetailed ? '详细命理解读' : '命理概览'}
             </h2>
             <p className="text-purple-200">
               {isStreaming ? '正在生成中...' : '根据您的出生信息生成的专业分析'}
@@ -207,14 +221,28 @@ export default function FateForm() {
           
           <div className="bg-white/5 rounded-lg p-6 mb-6">
             <div className="prose prose-invert max-w-none">
-              <div className="text-white whitespace-pre-line leading-relaxed">
+              <div className="text-white leading-relaxed">
                 {isStreaming ? (
-                  <>
+                  <div className="whitespace-pre-line">
                     {streamingContent}
                     <span className="inline-block w-2 h-5 bg-white animate-pulse ml-1"></span>
-                  </>
+                  </div>
                 ) : (
-                  showDetailed ? detailedResult : result
+                  <ReactMarkdown
+                    components={{
+                      p: ({ children }) => <p className="mb-4 text-white">{children}</p>,
+                      strong: ({ children }) => <strong className="font-bold text-yellow-300">{children}</strong>,
+                      h1: ({ children }) => <h1 className="text-2xl font-bold text-white mb-4">{children}</h1>,
+                      h2: ({ children }) => <h2 className="text-xl font-bold text-white mb-3">{children}</h2>,
+                      h3: ({ children }) => <h3 className="text-lg font-bold text-white mb-2">{children}</h3>,
+                      ul: ({ children }) => <ul className="list-disc list-inside text-white mb-4">{children}</ul>,
+                      ol: ({ children }) => <ol className="list-decimal list-inside text-white mb-4">{children}</ol>,
+                      li: ({ children }) => <li className="mb-1 text-white">{children}</li>,
+                      blockquote: ({ children }) => <blockquote className="border-l-4 border-purple-400 pl-4 italic text-gray-300 mb-4">{children}</blockquote>,
+                    }}
+                  >
+                    {showDetailed ? detailedResult || '' : result || ''}
+                  </ReactMarkdown>
                 )}
               </div>
             </div>
@@ -237,7 +265,7 @@ export default function FateForm() {
                   onClick={() => setShowDetailed(false)}
                   className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 cursor-pointer"
                 >
-                  返回称骨结果
+                  返回算命概览
                 </button>
               )}
               
@@ -269,7 +297,7 @@ export default function FateForm() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-3xl mx-auto">
       <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl">
         <h2 className="text-2xl font-semibold text-white mb-6 text-center">
           请填写您的基本信息
@@ -282,9 +310,56 @@ export default function FateForm() {
         )}
         
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* 历法选择放在最前面 */}
+          <div className="mb-6">
+            <label className="block text-white mb-2">第一步：选择历法</label>
+            <div className="flex space-x-6">
+              <label className="flex items-center">
+                <input 
+                  type="radio" 
+                  name="calendar" 
+                  value="lunar"
+                  checked={formData.calendar === 'lunar'}
+                  onChange={(e) => {
+                    handleInputChange('calendar', e.target.value as 'lunar' | 'solar')
+                    // 切换历法时重置日期相关字段
+                    setFormData(prev => ({
+                      ...prev,
+                      calendar: e.target.value as 'lunar' | 'solar',
+                      month: '',
+                      day: ''
+                    }))
+                  }}
+                  className="mr-2" 
+                />
+                <span className="text-white">农历（阴历）</span>
+              </label>
+              <label className="flex items-center">
+                <input 
+                  type="radio" 
+                  name="calendar" 
+                  value="solar"
+                  checked={formData.calendar === 'solar'}
+                  onChange={(e) => {
+                    handleInputChange('calendar', e.target.value as 'lunar' | 'solar')
+                    // 切换历法时重置日期相关字段
+                    setFormData(prev => ({
+                      ...prev,
+                      calendar: e.target.value as 'lunar' | 'solar',
+                      month: '',
+                      day: ''
+                    }))
+                  }}
+                  className="mr-2" 
+                />
+                <span className="text-white">公历（阳历）</span>
+              </label>
+            </div>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-white mb-2">出生年份</label>
+              <label className="block text-white mb-2">第二步：出生年份</label>
               <select 
                 value={formData.year}
                 onChange={(e) => handleInputChange('year', parseInt(e.target.value))}
@@ -292,41 +367,59 @@ export default function FateForm() {
               >
                 <option value="">请选择年份</option>
                 {Array.from({length: 100}, (_, i) => 2024 - i).map(year => (
-                  <option key={year} value={year}>{year}</option>
+                  <option key={year} value={year}>{year}年</option>
                 ))}
               </select>
             </div>
             
             <div>
-              <label className="block text-white mb-2">出生月份</label>
+              <label className="block text-white mb-2">第三步：出生月份</label>
               <select 
                 value={formData.month}
                 onChange={(e) => handleInputChange('month', parseInt(e.target.value))}
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:border-purple-400 focus:outline-none"
               >
                 <option value="">请选择月份</option>
-                {Array.from({length: 12}, (_, i) => i + 1).map(month => (
-                  <option key={month} value={month}>{month}月</option>
-                ))}
+                {formData.calendar === 'lunar' ? (
+                  LUNAR_MONTHS.map((monthName, index) => (
+                    <option key={index + 1} value={index + 1}>
+                      {monthName}
+                    </option>
+                  ))
+                ) : (
+                  Array.from({length: 12}, (_, i) => i + 1).map(month => (
+                    <option key={month} value={month}>{month}月</option>
+                  ))
+                )}
               </select>
             </div>
             
             <div>
-              <label className="block text-white mb-2">出生日期</label>
+              <label className="block text-white mb-2">第四步：出生日期</label>
               <select 
                 value={formData.day}
                 onChange={(e) => handleInputChange('day', parseInt(e.target.value))}
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:border-purple-400 focus:outline-none"
               >
                 <option value="">请选择日期</option>
-                {Array.from({length: 31}, (_, i) => i + 1).map(day => (
-                  <option key={day} value={day}>{day}日</option>
-                ))}
+                {formData.calendar === 'lunar' ? (
+                  LUNAR_DAYS.map((dayName, index) => (
+                    <option key={index + 1} value={index + 1}>
+                      {dayName}
+                    </option>
+                  ))
+                ) : (
+                  Array.from({length: 31}, (_, i) => i + 1).map(day => (
+                    <option key={day} value={day}>{day}日</option>
+                  ))
+                )}
               </select>
             </div>
             
             <div>
-              <label className="block text-white mb-2">出生时辰</label>
+              <label className="block text-white mb-2">第五步：出生时辰
+                <span className="text-gray-400 text-sm">（不知道的可以问下家里长辈）</span>
+              </label>
               <select 
                 value={formData.hour}
                 onChange={(e) => handleInputChange('hour', e.target.value)}
@@ -350,35 +443,7 @@ export default function FateForm() {
           </div>
           
           <div>
-            <label className="block text-white mb-2">历法选择</label>
-            <div className="flex space-x-6">
-              <label className="flex items-center">
-                <input 
-                  type="radio" 
-                  name="calendar" 
-                  value="lunar"
-                  checked={formData.calendar === 'lunar'}
-                  onChange={(e) => handleInputChange('calendar', e.target.value as 'lunar' | 'solar')}
-                  className="mr-2" 
-                />
-                <span className="text-white">农历（传统算命推荐）</span>
-              </label>
-              <label className="flex items-center">
-                <input 
-                  type="radio" 
-                  name="calendar" 
-                  value="solar"
-                  checked={formData.calendar === 'solar'}
-                  onChange={(e) => handleInputChange('calendar', e.target.value as 'lunar' | 'solar')}
-                  className="mr-2" 
-                />
-                <span className="text-white">公历（阳历）</span>
-              </label>
-            </div>
-          </div>
-          
-          <div>
-            <label className="block text-white mb-2">性别</label>
+            <label className="block text-white mb-2">第六步：选择性别</label>
             <div className="flex space-x-4">
               <label className="flex items-center">
                 <input 

@@ -11,19 +11,73 @@ interface FateRequest {
   type?: 'basic' | 'detailed' // 新增类型字段
 }
 
+// 时辰对应的时间段和骨重
+const HOUR_WEIGHTS = {
+  '子时': { period: '23:00-01:00', weight: 1.6 },
+  '丑时': { period: '01:00-03:00', weight: 1.4 },
+  '寅时': { period: '03:00-05:00', weight: 1.2 },
+  '卯时': { period: '05:00-07:00', weight: 1.8 },
+  '辰时': { period: '07:00-09:00', weight: 1.6 },
+  '巳时': { period: '09:00-11:00', weight: 1.4 },
+  '午时': { period: '11:00-13:00', weight: 1.2 },
+  '未时': { period: '13:00-15:00', weight: 1.8 },
+  '申时': { period: '15:00-17:00', weight: 1.6 },
+  '酉时': { period: '17:00-19:00', weight: 1.4 },
+  '戌时': { period: '19:00-21:00', weight: 1.2 },
+  '亥时': { period: '21:00-23:00', weight: 1.8 }
+} as const
+
+// 计算称骨重量
+function calculateBoneWeight(data: FateRequest): {
+  yearWeight: number,
+  monthWeight: number,
+  dayWeight: number,
+  hourWeight: number,
+  totalWeight: number
+} {
+  const { year, month, day, hour } = data
+  
+  // 年骨重：基于年份最后一位数
+  const yearLastDigit = year % 10
+  const yearWeight = 1 + (yearLastDigit * 0.2)
+  
+  // 月骨重：基于月份
+  const monthWeight = 0.8 + (month * 0.1)
+  
+  // 日骨重：基于日期
+  const dayWeight = 1 + ((day % 10) * 0.15)
+  
+  // 时骨重：使用固定对应表
+  const hourWeight = HOUR_WEIGHTS[hour as keyof typeof HOUR_WEIGHTS]?.weight || 1.5
+  
+  // 计算总重量
+  const totalWeight = +(yearWeight + monthWeight + dayWeight + hourWeight).toFixed(1)
+  
+  return {
+    yearWeight: +yearWeight.toFixed(1),
+    monthWeight: +monthWeight.toFixed(1),
+    dayWeight: +dayWeight.toFixed(1),
+    hourWeight: +hourWeight.toFixed(1),
+    totalWeight
+  }
+}
+
 const client = new OpenAI({
   apiKey: process.env.MOONSHOT_API_KEY,
   baseURL: "https://api.moonshot.cn/v1",
 })
 
-// 生成袁天罡称骨算法prompt
+// 生成命理分析prompt
 function generateBoneWeightPrompt(data: FateRequest) {
   const { year, month, day, hour, gender, calendar } = data
   
+  // 计算称骨重量
+  const weights = calculateBoneWeight(data)
+  
   const calendarText = calendar === 'lunar' ? '农历' : '公历（阳历）'
   const calendarNote = calendar === 'lunar' 
-    ? '请使用农历日期进行称骨算命，这是传统算命的标准方式。'
-    : '请注意用户提供的是公历日期，需要先转换为农历日期再进行称骨算命，因为袁天罡称骨算法基于农历。'
+    ? '请使用农历日期进行命理分析，这是传统命理的标准方式。'
+    : '请注意用户提供的是公历日期，需要先转换为农历日期再进行命理分析。'
   
   const prompt = `
 你是袁天罡称骨算法的专家，请根据以下信息为用户进行称骨算命：
@@ -37,30 +91,21 @@ function generateBoneWeightPrompt(data: FateRequest) {
 
 重要提示：${calendarNote}
 
-请严格按照袁天罡称骨算法的标准流程：
-1. ${calendar === 'solar' ? '先将公历日期转换为农历日期' : ''}
-2. 根据出生年份查找年骨重
-3. 根据出生月份查找月骨重  
-4. 根据出生日期查找日骨重
-5. 根据出生时辰查找时骨重
-6. 计算总骨重（年+月+日+时）
-7. 根据总骨重查找对应的批注诗
-
-请返回以下格式的结果：
-${calendar === 'solar' ? '**日期转换：**\n公历' + year + '年' + month + '月' + day + '日 对应农历：[农历年月日]\n\n' : ''}**骨重计算：**
-- 年骨重：X两X钱
-- 月骨重：X两X钱  
-- 日骨重：X两X钱
-- 时骨重：X两X钱
-- 总骨重：X两X钱
+根据传统命理计算，此命格：
+- 年值：${weights.yearWeight}
+- 月值：${weights.monthWeight}
+- 日值：${weights.dayWeight}
+- 时值：${weights.hourWeight}
+- 总值：${weights.totalWeight}
 
 **批注诗：**
 [对应骨重的原始批注诗]
+批注诗格式要求：一二句一行，第三四句换行。
 
 **简要解读：**
-[对批注诗的简要解释，100字以内]
+[对批注诗的简要解释，200字以内]
 
-请确保使用正宗的袁天罡称骨算法标准。
+请确保使用正宗的袁天罡称骨算法标准，直接给出批注诗和简要解读，不要告知是通过袁天罡算法计算的，也不要返回称骨重量。
 `
   
   return prompt
@@ -76,7 +121,7 @@ function generateDetailedPrompt(data: FateRequest) {
     : '请注意用户提供的是公历日期，需要先转换为农历日期再进行八字命理分析，因为传统命理学基于农历。'
   
   const prompt = `
-你是专业的命理大师，请根据以下出生信息为缘主进行详细的命理分析：
+你是专业的袁天罡称骨算法大师，请根据以下出生信息为缘主进行详细的命理分析：
 
 基本信息：
 - 出生年份：${year}年（${calendarText}）
@@ -87,30 +132,36 @@ function generateDetailedPrompt(data: FateRequest) {
 
 重要提示：${calendarNote}
 
-请结合八字命理、五行学说等传统命理学，详细分析以下四个方面：
+请结合袁天罡称骨算法，详细分析以下四个方面：
 
 **1. 健康运势**
 - 体质特点和健康倾向
 - 需要注意的健康问题
 - 养生建议和注意事项
 
-**2. 财运分析**
-- 财运总体走向
+**2. 财运事业**
+- 事业总体走向
 - 适合的投资理财方式
 - 求财的最佳时机和方向
+- 财运总体走向
 
 **3. 婚姻感情**
 - 感情性格特点
 - 婚姻缘分和配偶特征
 - 感情发展建议
 
-**4. 综合运势**
+**4. 家庭关系**
+- 家庭关系特点
+- 家庭成员关系
+- 家庭生活建议
+
+**5. 综合运势**
 - 人生总体运势走向
 - 事业发展潜力
 - 贵人助力和人际关系
 - 人生关键转折点
 
-请用专业、温和的语气，提供实用的建议。每个方面控制在150-200字，总字数800-1000字。
+请用专业的语气，提供实用的建议。不要明确告知称骨重量和“袁天罡”字样，每个方面控制在200-500字，总字数1200-3000字。
 `
   
   return prompt
