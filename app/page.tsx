@@ -20,7 +20,7 @@ export default function Home() {
     {
       name: '小红书',
       icon: '/xiaohongshu.png',
-      url: 'https://www.xiaohongshu.com/user/https://www.xiaohongshu.com/user/profile/6102837a0000000001003d5aprofile/xiaohua'
+      url: 'https://www.xiaohongshu.com/user/profile/6102837a0000000001003d5a'
     }
   ];
 
@@ -34,19 +34,19 @@ export default function Home() {
       github: 'https://github.com/pengxiaohua/listenly'
     },
     {
+      title: 'AI智能算命',
+      description: '一个基于AI算命的网站，输入出生日期和时间，快速生成详细的算命结果',
+      image: '/fate.png',
+      url: 'https://fate.xiaohua.run',
+      github: 'https://github.com/personal-website'
+    },
+    {
       title: '在线简历编辑平台',
-      description: '在线简历编辑和生成导出的平台',
-      image: '/project2.jpg',
+      description: '在线简历编辑和生成导出的平台, 支持多种简历模板和样式',
+      image: '',
       url: 'https://resume.xiaohua.run',
       github: 'https://github.com/pengxiaohua/resume-editor'
     },
-    {
-      title: 'AI私有组件生成系统',
-      description: '一个基于企业私有组件生成代码的AI系统',
-      image: '/project3.jpg',
-      url: 'https://ai.xiaohua.run',
-      github: 'https://github.com/pengxiaohua/private-components-generator'
-    }
   ];
 
   // 课程数据
@@ -168,18 +168,21 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <div key={project.title} className="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_4px_18px_0_rgba(0,0,0,0.25)] hover:border-[#008bf8]">
-              <div className="h-48 relative">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+              <div className="h-48 relative bg-black">
+                {
+                  project.image ? <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  /> :
+                  <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">Coming Soon...</div>
+                }
               </div>
               <div className="p-4">
                 <h3 className="font-bold text-lg mb-2">{project.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                <div className="flex justify-between">
+                {project.image && <div className="flex justify-between">
                   <a
                     href={project.url}
                     className="text-blue-500 hover:text-blue-700 text-sm"
@@ -196,7 +199,7 @@ export default function Home() {
                   >
                     GitHub
                   </a>
-                </div>
+                </div>}
               </div>
             </div>
           ))}
