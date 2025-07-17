@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 小华的个人网站 🚀
 
-## Getting Started
+> 访问地址：[xiaohua.run](https://xiaohua.run)
 
-First, run the development server:
+这是我的个人网站，展示我的技术能力、项目作品和学习资源。网站采用现代化的设计风格，提供良好的用户体验。
 
+## ✨ 功能特性
+
+### 🏠 主页
+- **个人介绍**：展示我的技术背景和职业经历
+- **社交媒体**：GitHub、抖音、小红书等平台链接
+- **项目展示**：个人开发的项目作品
+- **课程资源**：技术学习课程和教程
+
+### 📝 博客系统
+- 技术文章分享
+- 学习心得记录
+- 项目经验总结
+
+### 🎯 在线工具
+- **AI算命工具**：[fate.xiaohua.run](https://fate.xiaohua.run)
+- **简历编辑器**：[resume.xiaohua.run](https://resume.xiaohua.run)
+- **英语听写平台**：[Listenly](https://listenly.cn)
+
+### 📚 课程中心
+- 大前端面试指南
+- React & Node.js 全栈开发
+- 人工智能应用
+
+## 🛠️ 技术栈
+
+### 前端技术
+- **框架**：Next.js 15.2.4 (App Router)
+- **语言**：TypeScript 5
+- **样式**：Tailwind CSS 4
+- **UI组件**：React 19
+- **字体优化**：next/font
+
+### 开发工具
+- **包管理**：pnpm
+- **代码规范**：ESLint
+- **构建工具**：Next.js 内置
+- **部署平台**：Vercel
+
+### 特色功能
+- **响应式设计**：完美适配各种设备
+- **暗色主题**：支持明暗主题切换
+- **性能优化**：图片优化、字体优化
+- **SEO友好**：服务端渲染，搜索引擎优化
+
+## 🚀 快速开始
+
+### 环境要求
+- Node.js 18+ 
+- pnpm (推荐) 或 npm
+
+### 安装依赖
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 使用 pnpm (推荐)
+pnpm install
+
+# 或使用 npm
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 开发环境
+```bash
+# 启动开发服务器
+pnpm dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 或
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+访问 [http://localhost:3000](http://localhost:3000) 查看网站。
 
-## Learn More
+### 构建部署
+```bash
+# 构建生产版本
+pnpm build
 
-To learn more about Next.js, take a look at the following resources:
+# 启动生产服务器
+pnpm start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 代码检查
+pnpm lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 项目结构
 
-## Deploy on Vercel
+```
+personal-website/
+├── app/                    # Next.js App Router
+│   ├── api/               # API 路由
+│   ├── blog/              # 博客页面
+│   ├── courses/           # 课程页面
+│   ├── fate/              # AI算命工具
+│   ├── resume/            # 简历编辑器
+│   ├── components/        # 可复用组件
+│   ├── globals.css        # 全局样式
+│   ├── layout.tsx         # 根布局
+│   └── page.tsx           # 首页
+├── public/                # 静态资源
+├── deploy.sh              # 部署脚本
+├── next.config.ts         # Next.js 配置
+├── tailwind.config.js     # Tailwind 配置
+└── package.json           # 项目依赖
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌟 个人项目
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Listenly - 在线英语听写平台
+- **技术栈**：React + Node.js + MongoDB
+- **功能**：英语单词和句子听写练习
+- **地址**：[https://listenly.cn](https://listenly.cn)
+
+### AI智能算命
+- **技术栈**：Next.js + OpenAI API
+- **功能**：基于AI的算命服务
+- **地址**：[https://fate.xiaohua.run](https://fate.xiaohua.run)
+
+### 在线简历编辑器
+- **技术栈**：React + TypeScript
+- **功能**：在线简历编辑和导出
+- **地址**：[https://resume.xiaohua.run](https://resume.xiaohua.run)
+
+## 📞 联系方式
+
+- **个人网站**：[https://xiaohua.run](https://xiaohua.run)
+- **GitHub**：[https://github.com/pengxiaohua](https://github.com/pengxiaohua)
+- **抖音**：[https://www.douyin.com/user/xiaohua_up](https://www.douyin.com/user/xiaohua_up)
+- **小红书**：[https://www.xiaohongshu.com/user/profile/6102837a0000000001003d5a](https://www.xiaohongshu.com/user/profile/6102837a0000000001003d5a)
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+---
+
+**关于我**：全栈小华，拥有超过10年软件开发经验，先后在阿里巴巴、小米任职。热爱技术分享，致力于帮助更多人学习编程。
+
+*梦想：做一个纯粹的程序员，可以背着电脑，骑着车，在东湖边，吹着风，看着夕阳，听着音乐，累了找一家咖啡馆坐下来，打开电脑做自己感兴趣的项目。*
