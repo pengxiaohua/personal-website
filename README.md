@@ -33,14 +33,12 @@
 - **框架**：Next.js 15.2.4 (App Router)
 - **语言**：TypeScript 5
 - **样式**：Tailwind CSS 4
-- **UI组件**：React 19
-- **字体优化**：next/font
 
 ### 开发工具
 - **包管理**：pnpm
 - **代码规范**：ESLint
 - **构建工具**：Next.js 内置
-- **部署平台**：Vercel
+- **部署平台** 阿里云
 
 ### 特色功能
 - **响应式设计**：完美适配各种设备
