@@ -23,9 +23,9 @@
 - **英语听写平台**：[Listenly](https://listenly.cn)
 
 ### 📚 课程中心
-- 大前端面试指南
-- React & Node.js 全栈开发
-- 人工智能应用
+- 《大前端面试指南》
+- 《React & Node.js 全栈开发》
+- AI应用开发
 
 ## 🛠️ 技术栈
 
