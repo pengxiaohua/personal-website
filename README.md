@@ -19,7 +19,7 @@
 
 ### 🎯 在线工具
 - **AI算命工具**：[fate.xiaohua.run](https://fate.xiaohua.run)
-- **简历编辑器**：[resume.xiaohua.run](https://resume.xiaohua.run)
+- **在线简历编辑器**：[resume.xiaohua.run](https://resume.xiaohua.run)
 - **英语听写平台**：[Listenly](https://listenly.cn)
 
 ### 📚 课程中心
