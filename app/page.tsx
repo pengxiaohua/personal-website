@@ -110,12 +110,12 @@ export default function Home() {
             </p>
 
             <p className="text-lg leading-relaxed text-white opacity-90">
-              超过10年软件开发经验，先后在阿里巴巴、小米任职。
+              11年软件开发经验，先后在阿里巴巴、小米任职。
             </p>
             
             <div className="mt-6 p-4 bg-gradient-to-r from-blue-500/5 to-teal-500/5 rounded-xl border border-blue-200/10 dark:border-blue-900/30">
               <p className="text-lg leading-relaxed text-white opacity-90 italic">
-                &quot;<b>梦想：</b>做一个纯粹的程序员，可以背着电脑，骑着车，在东湖边，吹着风，看着夕阳，听着音乐，
+                &quot;<b>梦想：</b>做一个纯粹的程序员，可以背着电脑，开着车，到处旅行，
                 累了找一家咖啡馆坐下来，打开电脑做自己感兴趣的项目。&quot;
               </p>
             </div>
