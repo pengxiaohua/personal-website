@@ -27,7 +27,7 @@ export default function Home() {
   // 个人项目数据
   const projects = [
     {
-      title: '在线英语听写平台Listenly',
+      title: '在线英语听写平台',
       description: '为英语学习者提供在线英语单词和句子听写的平台',
       image: '/listenly.png',
       url: 'https://listenly.cn',
