@@ -213,7 +213,8 @@ export default function Home() {
           {courses.map((course) => (
             <Link
               key={course.title}
-              href={`/courses/${course.slug}`}
+              // href={`/courses/${course.slug}`}
+              href=''
               className="bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_4px_18px_0_rgba(0,0,0,0.25)] hover:border-[#008bf8] block"
             >
               <div className="h-48 relative">
