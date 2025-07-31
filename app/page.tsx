@@ -28,7 +28,7 @@ export default function Home() {
   const projects = [
     {
       title: '在线英语听写平台',
-      description: '为英语学习者提供在线英语单词和句子听写的平台',
+      description: '为英语学习者提供在线英语听力练习平台，包括单词、句子听写和影子跟读功能',
       image: '/listenly.png',
       url: 'https://listenly.cn',
       github: 'https://github.com/pengxiaohua/listenly'
