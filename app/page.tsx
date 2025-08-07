@@ -182,7 +182,7 @@ export default function Home() {
               <div className="p-4">
                 <h3 className="font-bold text-lg mb-2">{project.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                {project.image && <div className="flex justify-between">
+                <div className="flex justify-between">
                   <a
                     href={project.url}
                     className="text-blue-500 hover:text-blue-700 text-sm"
@@ -199,7 +199,7 @@ export default function Home() {
                   >
                     GitHub
                   </a>
-                </div>}
+                </div>
               </div>
             </div>
           ))}

@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
       return NextResponse.next()
     default:
       // 其他情况，重定向到主域名
-      if (hostname !== 'xiaohua.run' && hostname !== 'localhost:3000') {
+      if (hostname !== 'xiaohua.run' && hostname !== 'localhost:3000' && hostname !== 'localhost:3001') {
         return NextResponse.redirect(new URL('https://xiaohua.run', request.url))
       }
       return NextResponse.next()
