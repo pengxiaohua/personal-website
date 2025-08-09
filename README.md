@@ -99,7 +99,6 @@ personal-website/
 │   ├── layout.tsx         # 根布局
 │   └── page.tsx           # 首页
 ├── public/                # 静态资源
-├── deploy.sh              # 部署脚本
 ├── next.config.ts         # Next.js 配置
 ├── tailwind.config.js     # Tailwind 配置
 └── package.json           # 项目依赖
