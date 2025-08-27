@@ -71,6 +71,25 @@ export default function Home() {
     }
   ];
 
+  // 好书推荐数据
+  const books = [
+    {
+      title: '《JavaScript高级程序设计》',
+      description: '深入理解JavaScript语言的核心概念和高级特性，是前端开发者的必读之作。',
+      image: '/js-advanced.png',
+    },
+    {
+      title: '《React进阶》',
+      description: '掌握React框架的深入概念和最佳实践，提升前端开发效率和代码质量。',
+      image: '/react-advanced.png',
+    },
+    {
+      title: '《Node.js实战》',
+      description: '从零开始学习Node.js，掌握服务器端开发和API设计，构建高性能应用。',
+      image: '/nodejs-advanced.png',
+    },
+  ];
+
   return (
     <main className="min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
       {/* 顶部Logo */}
@@ -231,6 +250,46 @@ export default function Home() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* 好书推荐部分 */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">好书推荐</h2>
+        <div className="relative overflow-hidden">
+          <div className="flex gap-6 animate-scroll hover:pause-scroll">
+            {books.map((book) => (
+              <div key={book.title} className="flex-shrink-0 w-64 bg-white border border-gray-200 rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="h-32 mb-3 flex items-center justify-center">
+                  <Image
+                    src={book.image}
+                    alt={book.title}
+                    width={128}
+                    height={128}
+                    className="rounded-md"
+                  />
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">{book.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{book.description}</p>
+              </div>
+            ))}
+                         {/* 重复书籍列表以实现无缝滚动 */}
+             {books.map((book) => (
+               <div key={`${book.title}-duplicate`} className="flex-shrink-0 w-64 bg-white border border-gray-200 rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="h-32 mb-3 flex items-center justify-center">
+                  <Image
+                    src={book.image}
+                    alt={book.title}
+                    width={128}
+                    height={128}
+                    className="rounded-md"
+                  />
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">{book.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{book.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
