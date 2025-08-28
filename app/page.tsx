@@ -75,27 +75,27 @@ export default function Home() {
   const books = [
     {
       title: '《人类简史》',
-      description: '',
-      image: '/js-advanced.png',
-      link: ''
+      description: '从认知革命到人工智能时代，重新解读人类社会发展历程',
+      image: './books/history-of-human.png',
+      link: 'https://book.douban.com/subject/37295054/'
     },
     {
       title: '《悉达多》',
-      description: '',
-      image: '/react-advanced.png',
-      link: ''
+      description: '赫尔曼·黑塞的经典之作，探索人生意义与精神成长',
+      image: './books/siddahartha.png',
+      link: 'https://book.douban.com/subject/26980487/'
     },
     {
       title: '《穷查理宝典》',
-      description: '',
-      image: '/nodejs-advanced.png',
-      link: ''
+      description: '查理·芒格的人生智慧，投资哲学与思维模型',
+      image: './books/poor-charlie.png',
+      link: 'https://book.douban.com/subject/35557542/'
     },
     {
       title: '《毛泽东选集》',
-      description: '',
-      image: '/nodejs-advanced.png',
-      link: ''
+      description: '毛泽东思想的理论宝库，中国革命和建设的指导文献',
+      image: './books/mao-books.png',
+      link: 'https://book.douban.com/subject/1139360/'
     }
   ];
 
@@ -269,12 +269,12 @@ export default function Home() {
           <div className="flex gap-6 animate-scroll hover:pause-scroll">
             {books.map((book) => (
               <div key={book.title} className="flex-shrink-0 w-64 bg-white border border-gray-200 rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="h-32 mb-3 flex items-center justify-center">
+                <div className="mb-3 flex items-center justify-center">
                   <Image
                     src={book.image}
                     alt={book.title}
-                    width={128}
-                    height={128}
+                    width={132}
+                    height={200}
                     className="rounded-md"
                   />
                 </div>
@@ -285,7 +285,7 @@ export default function Home() {
                          {/* 重复书籍列表以实现无缝滚动 */}
              {books.map((book) => (
                <div key={`${book.title}-duplicate`} className="flex-shrink-0 w-64 bg-white border border-gray-200 rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="h-32 mb-3 flex items-center justify-center">
+                <div className="mb-3 flex items-center justify-center">
                   <Image
                     src={book.image}
                     alt={book.title}
