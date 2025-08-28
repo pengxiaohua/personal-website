@@ -74,20 +74,29 @@ export default function Home() {
   // 好书推荐数据
   const books = [
     {
-      title: '《JavaScript高级程序设计》',
-      description: '深入理解JavaScript语言的核心概念和高级特性，是前端开发者的必读之作。',
+      title: '《人类简史》',
+      description: '',
       image: '/js-advanced.png',
+      link: ''
     },
     {
-      title: '《React进阶》',
-      description: '掌握React框架的深入概念和最佳实践，提升前端开发效率和代码质量。',
+      title: '《悉达多》',
+      description: '',
       image: '/react-advanced.png',
+      link: ''
     },
     {
-      title: '《Node.js实战》',
-      description: '从零开始学习Node.js，掌握服务器端开发和API设计，构建高性能应用。',
+      title: '《穷查理宝典》',
+      description: '',
       image: '/nodejs-advanced.png',
+      link: ''
     },
+    {
+      title: '《毛泽东选集》',
+      description: '',
+      image: '/nodejs-advanced.png',
+      link: ''
+    }
   ];
 
   return (
