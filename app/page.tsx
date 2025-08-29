@@ -75,25 +75,25 @@ export default function Home() {
   const books = [
     {
       title: '《人类简史》',
-      description: '从认知革命到人工智能时代，重新解读人类社会发展历程',
+      description: '人类最终能够征服世界，是因为只有我们能够讨论虚构的事物。',
       image: './books/history-of-human.png',
       link: 'https://book.douban.com/subject/37295054/'
     },
     {
       title: '《悉达多》',
-      description: '赫尔曼·黑塞的经典之作，探索人生意义与精神成长',
+      description: '经历是你最好的老师',
       image: './books/siddahartha.png',
       link: 'https://book.douban.com/subject/26980487/'
     },
     {
       title: '《穷查理宝典》',
-      description: '查理·芒格的人生智慧，投资哲学与思维模型',
+      description: '我只想知道我将来会死在什么地方，这样我就可以永远不去那里了。',
       image: './books/poor-charlie.png',
       link: 'https://book.douban.com/subject/35557542/'
     },
     {
       title: '《毛泽东选集》',
-      description: '毛泽东思想的理论宝库，中国革命和建设的指导文献',
+      description: '要始终把精力放在解决问题上面，不要自怨自艾，因为不管你关注不关注，问题都是那个样子。',
       image: './books/mao-books.png',
       link: 'https://book.douban.com/subject/1139360/'
     }
