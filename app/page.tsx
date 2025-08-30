@@ -81,7 +81,7 @@ export default function Home() {
     },
     {
       title: '《悉达多》',
-      description: '经历是你最好的老师',
+      description: '经历是你最好的老师。',
       image: './books/siddahartha.png',
       link: 'https://book.douban.com/subject/26980487/'
     },
