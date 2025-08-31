@@ -18,7 +18,7 @@
 - 项目经验总结
 
 ### 🎯 在线工具
-- **AI算命工具**：[fate.xiaohua.run](https://fate.xiaohua.run)
+- **AI算命工具**：[xiaohua.run/fate](https://xiaohua.run/fate)
 - **在线简历编辑器**：[resume.xiaohua.run](https://resume.xiaohua.run)
 - **英语听写平台**：[Listenly](https://listenly.cn)
 
@@ -119,7 +119,7 @@ personal-website/
 ### 在线简历编辑器
 - **技术栈**：React + TypeScript
 - **功能**：在线简历编辑和导出
-- **地址**：[https://resume.xiaohua.run](https://resume.xiaohua.run)
+- **地址**：[https://xiaohua.run/resume](https://xiaohua.run/resume)
 
 ## 📞 联系方式
 
