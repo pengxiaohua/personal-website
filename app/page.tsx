@@ -40,13 +40,13 @@ export default function Home() {
       url: 'https://xiaohua.run/fate',
       github: 'https://github.com/personal-website'
     },
-    {
-      title: '在线简历编辑平台',
-      description: '在线简历编辑和生成导出的平台, 支持多种简历模板和样式',
-      image: '',
-      url: 'https://xiaohua.run/resume',
-      github: 'https://github.com/pengxiaohua/resume-editor'
-    },
+    // {
+    //   title: '在线简历编辑平台',
+    //   description: '在线简历编辑和生成导出的平台, 支持多种简历模板和样式',
+    //   image: '',
+    //   url: 'https://xiaohua.run/resume',
+    //   github: 'https://github.com/pengxiaohua/resume-editor'
+    // },
   ];
 
   // 课程数据

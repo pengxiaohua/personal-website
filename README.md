@@ -19,7 +19,6 @@
 
 ### 🎯 在线工具
 - **AI算命工具**：[xiaohua.run/fate](https://xiaohua.run/fate)
-- **在线简历编辑器**：[resume.xiaohua.run](https://resume.xiaohua.run)
 - **英语听写平台**：[Listenly](https://listenly.cn)
 
 ### 📚 课程中心
@@ -93,7 +92,6 @@ personal-website/
 │   ├── blog/              # 博客页面
 │   ├── courses/           # 课程页面
 │   ├── fate/              # AI算命工具
-│   ├── resume/            # 简历编辑器
 │   ├── components/        # 可复用组件
 │   ├── globals.css        # 全局样式
 │   ├── layout.tsx         # 根布局
@@ -115,11 +113,6 @@ personal-website/
 - **技术栈**：Next.js + OpenAI API
 - **功能**：基于AI的算命服务
 - **地址**：[https://fate.xiaohua.run](https://fate.xiaohua.run)
-
-### 在线简历编辑器
-- **技术栈**：React + TypeScript
-- **功能**：在线简历编辑和导出
-- **地址**：[https://xiaohua.run/resume](https://xiaohua.run/resume)
 
 ## 📞 联系方式
 
