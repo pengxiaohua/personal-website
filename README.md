@@ -31,7 +31,7 @@
 ### 前端技术
 - **框架**：Next.js 15.2.4 (App Router)
 - **语言**：TypeScript 5
-- **样式**：Tailwind CSS 4
+- **样式**：Tailwind CSS
 
 ### 开发工具
 - **包管理**：pnpm
