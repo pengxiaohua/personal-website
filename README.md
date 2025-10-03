@@ -20,6 +20,7 @@
 ### 🎯 在线工具
 - **AI算命工具**：[xiaohua.run/fate](https://xiaohua.run/fate)
 - **英语听写平台**：[Listenly](https://listenly.cn)
+- **PDF转JPG图片**：[xiaohua.run/tools](https://xiaohua.run/tools)
 
 ### 📚 课程中心
 - 《大前端面试指南》
@@ -113,7 +114,12 @@ personal-website/
 ### AI智能算命
 - **技术栈**：Next.js + OpenAI API
 - **功能**：基于AI的算命服务
-- **地址**：[https://fate.xiaohua.run](https://fate.xiaohua.run)
+- **地址**：[https://xiaohua.run/fate](https://xiaohua.run/fate)
+
+### PDF转JPG
+- **技术栈**：Next.js
+- **功能**：PDF转JPG图片
+- **地址**：[https://fate.xiaohua.run/tools](https://fate.xiaohua.run/tools)
 
 ## 📞 联系方式
 
