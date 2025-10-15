@@ -45,7 +45,7 @@ export default function Home() {
       description: 'PDF转JPG图片，支持批量转换和单页转换，彩色和黑白转换',
       image: '/tools.png',
       url: 'https://xiaohua.run/tools',
-      github: 'https://github.com/pengxiaohua/tools'
+      github: 'https://github.com/personal-website'
     },
   ];
 
