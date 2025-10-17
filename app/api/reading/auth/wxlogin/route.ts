@@ -7,6 +7,18 @@ import { signUserToken } from '@/lib/user-token'
 
 export async function POST(request: NextRequest) {
   const { code, userInfo } = await request.json() as { code: string, userInfo?: any }
+  // 测试模式：绕过微信登录，发放测试令牌并确保测试用户存在
+  if (process.env.DISABLE_AUTH === 'true') {
+    const openId = 'dev-openid'
+    const now = new Date()
+    const user = await prisma.user.upsert({
+      where: { openId },
+      update: { lastLoginAt: now },
+      create: { openId, nickname: 'Dev User', lastLoginAt: now }
+    })
+    const token = signUserToken({ openId, exp: Math.floor(Date.now()/1000) + 60*60*24*30 })
+    return Response.json({ token, user })
+  }
   if (!code) return Response.json({ error: 'code required' }, { status: 400 })
 
   const appid = process.env.WECHAT_APPID

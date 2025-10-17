@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const searchParams = new URL(request.url).searchParams
   const bookId = searchParams.get('bookId')
   if (!bookId) return Response.json({ error: 'bookId required' }, { status: 400 })
-  if (verifyBasicAuth(request)) {
+  if (process.env.DISABLE_AUTH === 'true' || verifyBasicAuth(request)) {
     const progress = await prisma.readingProgress.findUnique({ where: { bookId } })
     return Response.json(progress)
   }
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const body = await request.json()
   if (!body.bookId) return Response.json({ error: 'bookId required' }, { status: 400 })
-  if (verifyBasicAuth(request)) {
+  if (process.env.DISABLE_AUTH === 'true' || verifyBasicAuth(request)) {
     const progress = await prisma.readingProgress.upsert({
       where: { bookId: body.bookId },
       update: body,

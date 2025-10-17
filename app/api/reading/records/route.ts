@@ -6,7 +6,7 @@ import { getUserTokenFromRequestHeaders, verifyUserToken } from '@/lib/user-toke
 export async function GET(request: NextRequest) {
   const searchParams = new URL(request.url).searchParams
   const bookId = searchParams.get('bookId') || undefined
-  if (verifyBasicAuth(request)) {
+  if (process.env.DISABLE_AUTH === 'true' || verifyBasicAuth(request)) {
     const records = await prisma.readingRecord.findMany({ where: { bookId }, orderBy: { date: 'desc' } })
     return Response.json(records)
   }
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const body = await request.json()
-  if (verifyBasicAuth(request)) {
+  if (process.env.DISABLE_AUTH === 'true' || verifyBasicAuth(request)) {
     const record = await prisma.readingRecord.create({ data: body })
     return Response.json(record)
   }

@@ -4,6 +4,8 @@ const ADMIN_USERNAME = process.env.ADMIN_USERNAME || ''
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || ''
 
 export function verifyBasicAuth(request: NextRequest): boolean {
+  // 测试模式下跳过 Basic Auth
+  if (process.env.DISABLE_AUTH === 'true') return true
   const authHeader = request.headers.get('authorization')
   if (!authHeader || !authHeader.startsWith('Basic ')) return false
 
@@ -18,6 +20,9 @@ export function verifyBasicAuth(request: NextRequest): boolean {
 }
 
 export function basicAuthResponse() {
+  if (process.env.DISABLE_AUTH === 'true') {
+    return new Response('ok')
+  }
   return new Response('Authentication required.', {
     status: 401,
     headers: {
