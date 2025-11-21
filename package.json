@@ -9,7 +9,6 @@
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy"
-
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",
@@ -19,10 +18,12 @@
     "@radix-ui/react-tooltip": "^1.2.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "hanzi-writer": "^3.7.3",
     "jszip": "^3.10.1",
     "lucide-react": "^0.537.0",
     "next": "15.2.4",
     "openai": "^4.104.0",
+    "pinyin-pro": "^3.27.0",
     "prisma": "^6.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
