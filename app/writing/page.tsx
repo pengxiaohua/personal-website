@@ -17,7 +17,7 @@ import {
   RefreshCcw,
   Sparkles,
   Volume2,
-//   Wand2,
+  //   Wand2,
 } from 'lucide-react';
 import charactersData from '../../data/chinese-character.json';
 
@@ -396,23 +396,23 @@ export default function WritingPage() {
 
   /** -------- UI handlers ---------- */
 
-    // const scrollToPractice = () => {
-    //     practiceCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // };
+  // const scrollToPractice = () => {
+  //     practiceCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#eef2ff] via-white to-[#f0f9ff] pb-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-12 lg:flex-row lg:px-8">
         <section className="w-full flex-1 space-y-6">
           <div className="rounded-3xl bg-white/80 p-8 shadow-xl shadow-primary/5 backdrop-blur">
-            <div className="flex flex-col gap-3">
-              <p className="text-sm font-medium text-primary-600">AI 汉字笔画学习</p>
-              <h1 className="text-3xl font-semibold leading-tight text-slate-900">
+            <div className="flex text-3xl text-center flex-col gap-3">
+              <h1 className="font-medium text-primary-600">小学汉字笔画学习</h1>
+              {/* <h1 className="text-3xl font-semibold leading-tight text-slate-900">
                 输入一个汉字，查看笔顺并练习书写
-              </h1>
-              <p className="text-sm text-slate-500">
+              </h1> */}
+              {/* <p className="text-sm text-slate-500">
                 电脑可使用鼠标书写，平板与手机支持触摸笔与手指。
-              </p>
+              </p> */}
             </div>
 
             <div className="mt-6 grid gap-4 lg:grid-cols-2">
@@ -429,30 +429,6 @@ export default function WritingPage() {
                     </option>
                   ))}
                 </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-600">按顺序练习</label>
-                <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
-                  <button
-                    type="button"
-                    onClick={() => goToCharacter(charIndex - 1)}
-                    disabled={!hasPrevChar}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-600 transition disabled:opacity-40"
-                  >
-                    上一个
-                  </button>
-                  <span className="text-sm font-medium text-slate-500">
-                    进度 {gradeCharacters.length ? charIndex + 1 : 0}/{gradeCharacters.length}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => goToCharacter(charIndex + 1)}
-                    disabled={!hasNextChar}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-600 transition disabled:opacity-40"
-                  >
-                    写下一个
-                  </button>
-                </div>
               </div>
             </div>
             {hint && <p className="mt-2 text-sm text-rose-500">{hint}</p>}
@@ -495,7 +471,31 @@ export default function WritingPage() {
                     我来写写看
                   </button>
                   */}
-                  
+
+                </div>
+
+                <div className="mt-12 space-y-2">
+                  <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                    <button
+                      type="button"
+                      onClick={() => goToCharacter(charIndex - 1)}
+                      disabled={!hasPrevChar}
+                      className="rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-600 transition disabled:opacity-40"
+                    >
+                      上一个
+                    </button>
+                    <span className="text-sm font-medium text-slate-500">
+                      进度 {gradeCharacters.length ? charIndex + 1 : 0}/{gradeCharacters.length}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => goToCharacter(charIndex + 1)}
+                      disabled={!hasNextChar}
+                      className="rounded-full border border-slate-200 px-3 py-1 text-sm font-medium bg-blue-500 text-white transition disabled:opacity-40"
+                    >
+                      下一个
+                    </button>
+                  </div>
                 </div>
               </div>
 
