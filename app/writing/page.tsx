@@ -17,7 +17,7 @@ import {
   RefreshCcw,
   Sparkles,
   Volume2,
-  Wand2,
+//   Wand2,
 } from 'lucide-react';
 import charactersData from '../../data/chinese-character.json';
 
@@ -396,9 +396,9 @@ export default function WritingPage() {
 
   /** -------- UI handlers ---------- */
 
-  const scrollToPractice = () => {
-    practiceCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+    // const scrollToPractice = () => {
+    //     practiceCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#eef2ff] via-white to-[#f0f9ff] pb-16">
